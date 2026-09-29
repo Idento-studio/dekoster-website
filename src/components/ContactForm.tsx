@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { contact } from "@/lib/content";
-import { FORMSPREE_CONTACT, honeypotProps, submitToWebhook } from "@/lib/submit";
+import { honeypotProps, submitForm } from "@/lib/submit";
 import { Icon } from "./Icon";
 
 type Fields = { naam: string; email: string; gsm: string; bericht: string };
@@ -29,17 +29,17 @@ export function ContactForm() {
     setErrors(err);
     if (Object.keys(err).length) return;
     setState("sending");
-    const res = await submitToWebhook(
-      process.env.NEXT_PUBLIC_CONTACT_WEBHOOK_URL ?? FORMSPREE_CONTACT,
+    const res = await submitForm(
       {
-        bron: "contact",
         _subject: `Contactformulier dekoster.be: ${form.naam}`,
-        ...form,
-        verzonden: new Date().toISOString(),
+        naam: form.naam,
+        email: form.email,
+        gsm: form.gsm,
+        bericht: form.bericht,
       },
       { honeypot, startedAt },
     );
-    setState(res.ok || res.reason === "not-configured" || res.reason === "spam" ? "sent" : "error");
+    setState(res.ok || res.reason === "spam" ? "sent" : "error");
   };
 
   if (state === "sent") {

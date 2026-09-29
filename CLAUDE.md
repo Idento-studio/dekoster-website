@@ -11,7 +11,7 @@ Doelpubliek: particulieren met een (nieuwe) tuin, villa's, en kleinere B2B/openb
 ## Doel van de site
 
 Vertrouwen wekken ("persoonlijk, vakkundig, 25+ jaar") en offerte-aanvragen binnenhalen via
-de doorklikwizard op /offerte/. Die stuurt naar een n8n-webhook.
+de doorklikwizard op /offerte/. Die stuurt naar Formspree.
 
 ## Stack
 
@@ -19,7 +19,8 @@ de doorklikwizard op /offerte/. Die stuurt naar een n8n-webhook.
 - Hosting: Vercel (security headers in vercel.json). Werkt ook op elke statische host.
 - Geen next/image-optimalisatie: beelden vooraf naar WebP via `npm run images` (sharp).
 - Fonts zelf gehost in src/fonts via next/font/local.
-- Formulieren: rechtstreeks naar n8n (NEXT_PUBLIC_*_WEBHOOK_URL), honeypot + tijdsdrempel.
+- Formulieren (contact en offerte): rechtstreeks naar Formspree (src/lib/submit.ts), honeypot + tijdsdrempel.
+- Analytics (GA4) laadt enkel na toestemming via de cookiebanner (src/components/CookieConsent.tsx).
 
 ## Huisstijl (tokens in src/app/globals.css → @theme)
 

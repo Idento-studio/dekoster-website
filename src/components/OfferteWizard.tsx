@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { contact, servicePages, type ServicePageData } from "@/lib/content";
-import { honeypotProps, submitToWebhook } from "@/lib/submit";
+import { honeypotProps, MAX_FILE_BYTES, MAX_FILES, submitForm } from "@/lib/submit";
 import { Icon, Mark, type IconName } from "./Icon";
 
 /* ------------------------------------------------------------------ *
  *  Gratis offerte — doorklikwizard.
  *  Verzamelt alles wat nodig is voor een ruwe offerte. De payload
- *  (zie buildPayload) gaat naar de n8n-webhook uit NEXT_PUBLIC_OFFERTE_WEBHOOK_URL.
+ *  (zie buildPayload) gaat naar Formspree (zie src/lib/submit.ts).
  * ------------------------------------------------------------------ */
 
 /** Stap 1: type werk. Stap 2: subdiensten uit de expertise-lijst van de gekozen dienstpagina('s). */
@@ -42,7 +42,7 @@ const VERGELIJK: [number, string][] = [
   [2500, "een halve voetbalveld"],
 ];
 
-type Foto = { name: string; size: number; url: string | null };
+type Foto = { name: string; size: number; url: string | null; file: File };
 
 const initial = {
   types: [],
@@ -738,12 +738,19 @@ export function OfferteWizard() {
               accept="image/*,.pdf"
               className="sr-only"
               onChange={(e) => {
-                const files = [...(e.target.files ?? [])].slice(0, 10).map((f) => ({
-                  name: f.name,
-                  size: f.size,
-                  url: f.type.startsWith("image/") ? URL.createObjectURL(f) : null,
-                }));
-                set("fotos", [...a.fotos, ...files].slice(0, 10));
+                const picked = [...(e.target.files ?? [])];
+                if (picked.some((f) => f.size > MAX_FILE_BYTES))
+                  setToast("Een bestand is te groot (max. 25 MB) en werd overgeslagen.");
+                const files = picked
+                  .filter((f) => f.size <= MAX_FILE_BYTES)
+                  .map((f) => ({
+                    name: f.name,
+                    size: f.size,
+                    url: f.type.startsWith("image/") ? URL.createObjectURL(f) : null,
+                    file: f,
+                  }));
+                set("fotos", [...a.fotos, ...files].slice(0, MAX_FILES));
+                e.target.value = "";
               }}
             />
           </label>
@@ -868,46 +875,48 @@ export function OfferteWizard() {
     topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const buildPayload = () => ({
-    bron: "dekoster.be/offerte",
-    ingediend: new Date().toISOString(),
-    klant: {
+  /** Platte tekstvelden (lege weggelaten), zodat de Formspree-mail leesbaar is. */
+  const buildPayload = () => {
+    const labels = (types: string[]) =>
+      types.map((t) => servicePages[t as ServicePageData["slug"]].nav).join(", ");
+    const fields: Record<string, string> = {
+      _subject: `Offerte-aanvraag dekoster.be: ${a.naam}`,
       naam: a.naam,
       email: a.email,
       gsm: a.gsm,
       adres: `${a.straat}, ${a.postcode} ${a.gemeente}`,
-      plaatsbezoek: a.bezoek,
-    },
-    project: {
-      type_werk: a.types.map((t) => servicePages[t as ServicePageData["slug"]].nav),
-      diensten: a.diensten.map((id) => dienstLabel(id)),
+      plaatsbezoek: a.bezoek.join(", "),
+      type_werk: labels(a.types),
+      diensten: a.diensten.map(dienstLabel).join(", "),
       situatie: a.situatie,
-      oppervlakte_m2: a.m2Onbekend ? null : a.m2,
-      details: {
-        materiaal: a.materiaal,
-        verharding_m2: a.verhardingM2,
-        haag_lengte_m: a.haagLengte,
-        haag_hoogte: a.haagHoogte,
-        frequentie: a.frequentie,
-        gazon: a.gazonType,
-        grondafvoer: a.grondAfvoer,
-        wateroverlast: a.wateroverlast,
-      },
-      terrein: { toegang: a.toegang, helling: a.helling, eerst_verwijderen: a.obstakels },
+      oppervlakte: a.m2Onbekend ? "nog op te meten" : `${a.m2} m²`,
+      materiaal: a.materiaal,
+      verharding_m2: a.verhardingM2,
+      haag_lengte_m: a.haagLengte,
+      haag_hoogte: a.haagHoogte,
+      frequentie: a.frequentie,
+      gazon: a.gazonType,
+      grondafvoer: a.grondAfvoer,
+      wateroverlast: a.wateroverlast,
+      toegang: a.toegang,
+      helling: a.helling,
+      eerst_verwijderen: a.obstakels.join(", "),
       timing: a.timing,
       budget: a.budget,
       toelichting: a.toelichting,
-      bijlagen: a.fotos.map((f) => f.name),
-    },
-  });
+      bijlagen: a.fotos.map((f) => f.name).join(", "),
+    };
+    return Object.fromEntries(Object.entries(fields).filter(([, v]) => v.trim()));
+  };
 
   const submit = async () => {
     setSending(true);
     // Bij een netwerkfout tonen we toch de bevestiging mét telefoonnummer als terugvalweg.
-    await submitToWebhook(process.env.NEXT_PUBLIC_OFFERTE_WEBHOOK_URL, buildPayload(), {
-      honeypot,
-      startedAt,
-    });
+    await submitForm(
+      buildPayload(),
+      { honeypot, startedAt },
+      a.fotos.map((f) => f.file),
+    );
     setSending(false);
     setDone(true);
     topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });

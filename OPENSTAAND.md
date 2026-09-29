@@ -16,12 +16,7 @@ Wat nog bevestigd of aangeleverd moet worden voor livegang.
 ## Bij Idento
 
 - [ ] Originele foto's in hoge resolutie uit Drive in `assets/originals` zetten en `npm run images` draaien (nu 800–1200 px)
-- [ ] n8n: webhooks voor offerte en contact aanmaken, honeypot + rate limiting, bevestigingsmails
-- [ ] Bijlagen in de offerte: nu enkel bestandsnamen in de payload → upload naar n8n (multipart) of opslag voorzien
-- [ ] Privacy-, cookie- en voorwaardenpagina's + link in footer en formulieren
-- [ ] Cookiebanner + GA4 met Consent Mode v2 (enkel als er tracking komt)
+- [ ] Privacy-, cookie- en voorwaardenpagina's + link in footer en formulieren (cookiebanner staat er al; de tekst verwijst nog niet naar een cookiebeleid)
 - [ ] OG-beeld 1200×630 op maat
 - [ ] Keuze hero: bestaande hero of een van de drie gedurfde varianten (Artifact "De Koster Hero Opties")
 - [ ] Launch-checklist doorlopen
-- [ ] Analytics (GA4 `G-M5D8X2RHFH`) staat aan zonder cookiebanner: cookiebeleid/toestemming regelen vóór livegang
-- [ ] Contactformulier post naar Formspree (`xppwbaqr`); offertewizard gebruikt nog `NEXT_PUBLIC_OFFERTE_WEBHOOK_URL` (n8n)
