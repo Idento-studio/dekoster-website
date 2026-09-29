@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import { CallToAction } from "@/components/Footer";
 import { ServicePage } from "@/components/ServicePage";
 import { servicePages } from "@/lib/content";
+import { pageMeta } from "@/lib/seo";
 
 const page = servicePages.grondwerken;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: page.meta.title,
   description: page.meta.description,
-  alternates: { canonical: "/grondwerken/" },
-  openGraph: {
-    images: [{ url: `/images/${page.hero.image}-1200.webp`, width: 1200, height: 800 }],
-  },
-};
+  keywords: page.meta.keywords,
+  path: "/grondwerken/",
+  image: page.hero.image,
+});
 
 export default function Page() {
   return (

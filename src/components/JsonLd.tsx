@@ -12,7 +12,7 @@ export function LocalBusinessJsonLd() {
     description: site.description,
     telephone: contact.phone,
     email: contact.email,
-    areaServed: site.region,
+    areaServed: site.areas.map((name) => ({ "@type": "City", name })),
     address: {
       "@type": "PostalAddress",
       streetAddress: contact.street,

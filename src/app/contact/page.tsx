@@ -5,28 +5,36 @@ import { CopyLine } from "@/components/CopyLine";
 import { Icon } from "@/components/Icon";
 import { PageHero } from "@/components/PageParts";
 import { contact, OFFERTE } from "@/lib/content";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: "Bel, mail of kom langs. We plannen graag een vrijblijvend gesprek ter plaatse in.",
-  alternates: { canonical: "/contact/" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Contact tuinaannemer Gent en Eeklo",
+  description:
+    "Contact met Tuinaanneming De Koster voor tuinaanleg, grondwerken en infra in Gent en omstreken. Bel, mail of vraag een vrijblijvend plaatsbezoek aan.",
+  keywords: [
+    "tuinaannemer Gent contact",
+    "tuinaannemer Eeklo",
+    "tuinaanleg offerte Gent",
+    "Tuinaanneming De Koster",
+  ],
+  path: "/contact/",
+  image: "totaal",
+});
 
 export default function Page() {
   return (
     <>
       <PageHero
-        image="duo-maaier"
-        alt="Het team bij de aanhangwagen"
+        image="totaal"
+        alt="Twee collega's met een heggenschaar voor een beukenhaag"
         eyebrow="Contact"
         title="Neem contact met ons op."
         lead="Heeft u een vraag of wilt u een vrijblijvende offerte? We helpen u graag verder."
         actions={false}
-        compact
       />
 
       <section className="bg-linen pt-4 pb-24">
-        <div className="wrap grid gap-10 lg:grid-cols-[1fr_1.15fr]">
+        <div className="wrap grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.15fr]">
           <div data-reveal className="space-y-4">
             <h2 className="text-[30px] font-semibold text-forest">Contactgegevens</h2>
             <p className="max-w-[46ch] leading-[1.7]">

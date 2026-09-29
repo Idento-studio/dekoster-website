@@ -6,6 +6,7 @@ import { Foto } from "@/components/Foto";
 import { Gallery } from "@/components/Gallery";
 import { Icon } from "@/components/Icon";
 import { Parallax } from "@/components/Parallax";
+import { pageMeta, trimDescription } from "@/lib/seo";
 import { WaveDivider } from "@/components/WaveDivider";
 import { projectHref, projects } from "@/lib/content";
 
@@ -23,14 +24,19 @@ export async function generateMetadata({
   const { slug } = await params;
   const p = withDetail.find((x) => x.slug === slug);
   if (!p?.detail) return {};
-  return {
-    title: `${p.title} — ${p.category.toLowerCase()} ${p.year}`,
-    description: p.detail.intro.slice(0, 155),
-    alternates: { canonical: `/realisaties/${p.slug}/` },
-    openGraph: {
-      images: [{ url: `/images/${p.detail.cover}-1200.webp`, width: 1200, height: 800 }],
-    },
-  };
+  return pageMeta({
+    // categorie enkel in de titel als hij binnen ~60 tekens (incl. " | De Koster") blijft
+    title: p.title.length + p.category.length + 15 <= 60 ? `${p.title} | ${p.category}` : p.title,
+    description: trimDescription(`${p.detail.intro} Realisatie van Tuinaanneming De Koster.`),
+    keywords: [
+      `${p.category.toLowerCase()} ${p.location}`,
+      p.title,
+      "tuinaannemer Gent",
+      "realisaties Gent en omstreken",
+    ],
+    path: `/realisaties/${p.slug}/`,
+    image: p.detail.cover,
+  });
 }
 
 export default async function ProjectPage({ params }: PageProps<"/realisaties/[slug]">) {

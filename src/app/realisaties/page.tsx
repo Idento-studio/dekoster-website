@@ -2,13 +2,25 @@ import type { Metadata } from "next";
 import { CallToAction } from "@/components/Footer";
 import { ChallengeBand, PageHero } from "@/components/PageParts";
 import { RealisatiesGrid } from "@/components/RealisatiesGrid";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Realisaties",
+export const metadata: Metadata = pageMeta({
+  title: "Realisaties tuinaanleg en grondwerken in Gent",
   description:
-    "Van kleine stadstuin tot groot totaalproject. Een selectie van tuinaanleg, grondwerken en infra door De Koster.",
-  alternates: { canonical: "/realisaties/" },
-};
+    "Bekijk onze realisaties in Gent en omstreken: tuinaanleg, terrassen, opritten, grondwerken en riolering. Van stadstuin tot totaalproject.",
+  keywords: [
+    "realisaties tuinaanleg Gent",
+    "tuinen Gent voorbeelden",
+    "tuinaannemer Gent referenties",
+    "tuinaanleg Eeklo",
+    "tuinaanleg Nazareth",
+    "tuinaanleg Destelbergen",
+    "opritten Gent",
+    "grondwerken Gent",
+  ],
+  path: "/realisaties/",
+  image: "totaal",
+});
 
 export default function Page() {
   return (
@@ -20,7 +32,6 @@ export default function Page() {
         title="Onze realisaties"
         lead="Van kleine stadstuin tot groot totaalproject. Een selectie van ons werk."
         actions={false}
-        compact
       />
       <section className="bg-linen pt-6 pb-16">
         <div className="wrap">
