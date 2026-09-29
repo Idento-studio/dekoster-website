@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { contact } from "@/lib/content";
+import { contact, servicePages, type ServicePageData } from "@/lib/content";
 import { honeypotProps, submitToWebhook } from "@/lib/submit";
 import { Icon, Mark, type IconName } from "./Icon";
 
@@ -12,28 +12,24 @@ import { Icon, Mark, type IconName } from "./Icon";
  *  (zie buildPayload) gaat naar de n8n-webhook uit NEXT_PUBLIC_OFFERTE_WEBHOOK_URL.
  * ------------------------------------------------------------------ */
 
-const DIENSTEN: { id: string; label: string; icon: IconName }[] = [
-  { id: "aanleg", label: "Nieuwe tuin aanleggen", icon: "sprout" },
-  { id: "onderhoud", label: "Tuinonderhoud", icon: "calendar" },
-  { id: "gazon", label: "Gazon of graszoden", icon: "grass" },
-  { id: "beplanting", label: "Beplanting", icon: "leaf" },
-  { id: "hagen", label: "Hagen & snoeiwerk", icon: "scissors" },
-  { id: "terras", label: "Terras", icon: "stones" },
-  { id: "oprit", label: "Oprit of parking", icon: "truck" },
-  { id: "pad", label: "Tuinpad", icon: "road" },
-  { id: "grond", label: "Afgraven & nivelleren", icon: "layers" },
-  { id: "drainage", label: "Drainage & riolering", icon: "pipe" },
-  { id: "vijver", label: "Tuinvijver", icon: "drop" },
-  { id: "tuinhuis", label: "Tuinhuis of overkapping", icon: "house" },
+/** Stap 1: type werk. Stap 2: subdiensten uit de expertise-lijst van de gekozen dienstpagina('s). */
+const TYPES: { id: ServicePageData["slug"]; icon: IconName; sub: string }[] = [
+  { id: "tuinaanleg", icon: "sprout", sub: "Tuinen, beplanting en onderhoud" },
+  { id: "grondwerken", icon: "shovel", sub: "Afgraven, drainage en grondtransport" },
+  { id: "infra", icon: "road", sub: "Wegen, verhardingen en funderingen" },
 ];
 
+/** Een subdienst-id is `type:titel`, zodat dezelfde titel in twee types niet botst. */
+const dienstId = (type: string, title: string) => `${type}:${title}`;
+const dienstLabel = (id: string) => id.slice(id.indexOf(":") + 1);
+
 const REACTIES: Record<string, string> = {
-  aanleg: "Een nieuwe tuin, daar krijgt Jaro zin in.",
-  hagen: "De heggenschaar ligt al klaar.",
-  vijver: "Waterpartijen: altijd een blikvanger.",
-  drainage: "Droge voeten, daar zorgen we voor.",
-  oprit: "Een oprit die er generaties ligt.",
-  gazon: "Groener gras aan uw kant, beloofd.",
+  Snoeiwerken: "De heggenschaar ligt al klaar.",
+  Tuinvijvers: "Waterpartijen: altijd een blikvanger.",
+  "Drainage & riolering": "Droge voeten, daar zorgen we voor.",
+  "Opritten en parkings": "Een oprit die er generaties ligt.",
+  Natuurgras: "Groener gras aan uw kant, beloofd.",
+  Terrassen: "Een terras waar u graag zit, daar werken we naartoe.",
 };
 
 const VERGELIJK: [number, string][] = [
@@ -49,6 +45,7 @@ const VERGELIJK: [number, string][] = [
 type Foto = { name: string; size: number; url: string | null };
 
 const initial = {
+  types: [],
   diensten: [],
   situatie: "",
   m2: 150,
@@ -76,14 +73,27 @@ const initial = {
   gemeente: "",
   bezoek: [] as string[],
 };
-type Answers = Omit<typeof initial, "diensten" | "obstakels" | "fotos"> & {
+type Answers = Omit<typeof initial, "types" | "diensten" | "obstakels" | "fotos"> & {
+  types: string[];
   diensten: string[];
   obstakels: string[];
   fotos: Foto[];
 };
 
-const dienstLabel = (id: string) => DIENSTEN.find((d) => d.id === id)?.label ?? id;
-const heeft = (a: Answers, ...ids: string[]) => ids.some((id) => a.diensten.includes(id));
+/** Subdiensten waarvoor we naar verhardingsmateriaal vragen. */
+const VERHARDING = ["Terrassen", "Opritten en parkings", "Wandelpaden", "Boordstenen & klinkers"];
+/** Subdiensten waarvoor we naar grondafvoer en wateroverlast vragen. */
+const GROND = [
+  "Afgraven & nivelleren",
+  "Drainage & riolering",
+  "Grondtransport",
+  "Grondafvoer",
+  "Ophogingen & aanvullingen",
+];
+
+/** Is een van deze subdiensten (op titel) gekozen? */
+const heeft = (a: Answers, ...titels: string[]) =>
+  a.diensten.some((id) => titels.includes(dienstLabel(id)));
 
 /* ---- kleine bouwstenen ---- */
 function Tile({
@@ -291,9 +301,20 @@ export function OfferteWizard() {
   const set = <K extends keyof Answers>(k: K, v: Answers[K]) => setA((s) => ({ ...s, [k]: v }));
   const sz = seizoenen();
 
+  const toggleType = (id: string) => {
+    const on = a.types.includes(id);
+    const types = on ? a.types.filter((x) => x !== id) : [...a.types, id];
+    // subdiensten van een afgevinkt type verdwijnen mee
+    setA((s) => ({
+      ...s,
+      types,
+      diensten: s.diensten.filter((d) => types.includes(d.slice(0, d.indexOf(":")))),
+    }));
+  };
   const toggleDienst = (id: string) => {
     const on = a.diensten.includes(id);
-    if (!on && REACTIES[id]) setToast(REACTIES[id]);
+    const reactie = REACTIES[dienstLabel(id)];
+    if (!on && reactie) setToast(reactie);
     set("diensten", on ? a.diensten.filter((x) => x !== id) : [...a.diensten, id]);
   };
   useEffect(() => {
@@ -313,21 +334,63 @@ export function OfferteWizard() {
   };
   const steps: Step[] = [
     {
+      id: "type",
+      title: "Wat voor werk is het?",
+      sub: "Kies het soort werk. Combineren mag, dan kiest u in de volgende stap per type.",
+      valid: a.types.length > 0,
+      body: (
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+          {TYPES.map((t, n) => (
+            <Tile
+              key={t.id}
+              label={servicePages[t.id].nav}
+              sub={t.sub}
+              icon={t.icon}
+              hotkey={n + 1}
+              active={a.types.includes(t.id)}
+              onClick={() => toggleType(t.id)}
+            />
+          ))}
+        </div>
+      ),
+    },
+    {
       id: "diensten",
       title: "Wat mogen we voor u doen?",
       sub: "Kies alles wat van toepassing is. Meerdere keuzes mogen.",
       valid: a.diensten.length > 0,
       body: (
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-          {DIENSTEN.map((d, n) => (
-            <Tile
-              key={d.id}
-              {...d}
-              hotkey={n < 9 ? n + 1 : null}
-              active={a.diensten.includes(d.id)}
-              onClick={() => toggleDienst(d.id)}
-            />
-          ))}
+        <div className="space-y-8">
+          {TYPES.filter((t) => a.types.includes(t.id)).map((t, g, list) => {
+            // hotkeynummers lopen door over de groepen heen
+            const offset = list
+              .slice(0, g)
+              .reduce((sum, x) => sum + servicePages[x.id].expertise.length, 0);
+            return (
+              <div key={t.id} className="space-y-3">
+                {list.length > 1 && (
+                  <p className="font-mono text-[11px] tracking-[3px] text-sage uppercase">
+                    {servicePages[t.id].nav}
+                  </p>
+                )}
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                  {servicePages[t.id].expertise.map((d, n) => {
+                    const id = dienstId(t.id, d.title);
+                    return (
+                      <Tile
+                        key={id}
+                        label={d.title}
+                        icon={d.icon}
+                        hotkey={offset + n < 9 ? offset + n + 1 : null}
+                        active={a.diensten.includes(id)}
+                        onClick={() => toggleDienst(id)}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
         </div>
       ),
     },
@@ -454,11 +517,11 @@ export function OfferteWizard() {
       id: "details",
       title: "Nog enkele details",
       sub: "Alleen wat relevant is voor uw keuzes.",
-      skip: !heeft(a, "terras", "oprit", "pad", "hagen", "onderhoud", "gazon", "grond", "drainage"),
+      skip: !heeft(a, ...VERHARDING, ...GROND, "Snoeiwerken", "Tuinonderhoud", "Natuurgras"),
       valid: true,
       body: (
         <div className="space-y-8">
-          {heeft(a, "terras", "oprit", "pad") && (
+          {heeft(a, ...VERHARDING) && (
             <>
               <Q label="Welk materiaal voor de verharding?">
                 <Chips
@@ -491,7 +554,7 @@ export function OfferteWizard() {
               </Q>
             </>
           )}
-          {heeft(a, "hagen") && (
+          {heeft(a, "Snoeiwerken") && (
             <>
               <Q label="Hoe lang is de haag in totaal?" hint="optioneel">
                 <div className="relative max-w-[220px]">
@@ -516,7 +579,7 @@ export function OfferteWizard() {
               </Q>
             </>
           )}
-          {heeft(a, "onderhoud") && (
+          {heeft(a, "Tuinonderhoud") && (
             <Q label="Hoe vaak wenst u onderhoud?">
               <Chips
                 options={["Eenmalig", "Per seizoen", "Maandelijks", "Tweewekelijks"]}
@@ -525,7 +588,7 @@ export function OfferteWizard() {
               />
             </Q>
           )}
-          {heeft(a, "gazon") && (
+          {heeft(a, "Natuurgras") && (
             <Q label="Wat met het gazon?">
               <Chips
                 options={["Nieuw inzaaien", "Graszoden leggen", "Bestaand gazon herstellen"]}
@@ -534,7 +597,7 @@ export function OfferteWizard() {
               />
             </Q>
           )}
-          {heeft(a, "grond", "drainage") && (
+          {heeft(a, ...GROND) && (
             <>
               <Q label="Moet er grond afgevoerd worden?">
                 <Chips
@@ -816,6 +879,7 @@ export function OfferteWizard() {
       plaatsbezoek: a.bezoek,
     },
     project: {
+      type_werk: a.types.map((t) => servicePages[t as ServicePageData["slug"]].nav),
       diensten: a.diensten.map((id) => dienstLabel(id)),
       situatie: a.situatie,
       oppervlakte_m2: a.m2Onbekend ? null : a.m2,
@@ -872,13 +936,14 @@ export function OfferteWizard() {
 
   /* ---- samenvatting ---- */
   const summary = [
+    ["Type", a.types.map((t) => servicePages[t as ServicePageData["slug"]].nav).join(", ")],
     ["Werk", a.diensten.map((id) => dienstLabel(id)).join(", ")],
     ["Situatie", a.situatie],
     [
       "Oppervlakte",
       a.m2Onbekend
         ? "Nog op te meten"
-        : i >= 2 || done
+        : i >= visible.findIndex((s) => s.id === "oppervlakte") || done
           ? `± ${a.m2.toLocaleString("nl-BE")} m²`
           : "",
     ],
@@ -903,7 +968,7 @@ export function OfferteWizard() {
               Klik uw project bij elkaar.
             </h1>
             <p className="mt-4 max-w-[52ch] text-[16px] leading-[1.7] text-sand/85">
-              Acht korte stappen, ongeveer twee minuten. Daarna komen we gratis langs voor een
+              Een paar korte stappen, ongeveer twee minuten. Daarna komen we gratis langs voor een
               plaatsbezoek en maken we een offerte op maat.
             </p>
           </div>
@@ -911,7 +976,7 @@ export function OfferteWizard() {
             <Sprout p={progress} />
             <div className="pr-3">
               <p className="font-mono text-[11px] tracking-[3px] text-lime uppercase">
-                Uw tuin groeit
+                Uw project groeit
               </p>
               <p className="mt-1 font-display text-[34px] font-bold text-white tabular-nums">
                 {Math.round(progress * 100)}%
