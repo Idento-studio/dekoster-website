@@ -56,7 +56,7 @@ export default function Page() {
             <div className="rounded-2xl bg-forest p-6 text-sand">
               <p className="flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-lime uppercase">
                 <Icon name="clock" className="h-4 w-4" />
-                Openingsuren
+                Telefonisch bereikbaar
               </p>
               <div className="mt-4 space-y-2">
                 {contact.hours.map(([d, h]) => (

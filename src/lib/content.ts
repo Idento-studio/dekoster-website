@@ -24,21 +24,20 @@ export const site = {
     "Waarschoot",
   ],
   gaId: "G-M5D8X2RHFH",
+  instagram: "https://www.instagram.com/dekoster.be/",
 };
 
-// TODO (OPENSTAAND): telefoonnummer en openingsuren nog bevestigen bij Jaro.
 export const contact = {
   street: "Molenstraat 226 bus 101",
   postalCode: "9900",
   city: "Eeklo",
   address: "Molenstraat 226 bus 101, 9900 Eeklo",
-  phone: "+32 2 345 67 89",
-  tel: "+3223456789",
-  email: "info@dekoster.be",
+  phone: "0491 59 30 26",
+  tel: "+32491593026",
+  email: "contact@dekoster.be",
   hours: [
-    ["Ma tot Vr", "07:00 tot 17:00"],
-    ["Za", "08:00 tot 12:00"],
-    ["Zo", "Gesloten"],
+    ["Ma tot Za", "09:00 tot 17:00"],
+    ["Zo", "Gesloten, niet bereikbaar"],
   ] as const,
 };
 

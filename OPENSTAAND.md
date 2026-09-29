@@ -4,7 +4,7 @@ Wat nog bevestigd of aangeleverd moet worden voor livegang.
 
 ## Bij de klant (Jaro)
 
-- [ ] **Contactgegevens**: adres (Molenstraat 226 bus 101, 9900 Eeklo), ondernemings- en btw-nummer zijn ingevuld. Nog te bevestigen: telefoonnummer en openingsuren (nu placeholders).
+- [ ] **Contactgegevens**: adres (Molenstraat 226 bus 101, 9900 Eeklo), ondernemings- en btw-nummer zijn ingevuld. Telefoonnummer (0491 59 30 26) en e-mail (contact@dekoster.be) zijn ingevuld. Telefonisch bereikbaar ma tot za 09:00 tot 17:00, zondag gesloten (opgegeven door Jens).
 - [ ] Werkgebied: site zegt nu "Gent en omstreken" — het adres is nu Eeklo, klopt dat?
 - [ ] Naam en functie onder "Over ons": nu "Jaro De Koster · zaakvoerder"
 - [ ] "25+ jaar vakmanschap" bevestigen

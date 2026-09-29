@@ -10,8 +10,9 @@ export function LocalBusinessJsonLd() {
     image: `${site.url}/images/duo-tuin-1200.webp`,
     logo: `${site.url}/icon.svg`,
     description: site.description,
-    telephone: contact.phone,
+    telephone: contact.tel,
     email: contact.email,
+    sameAs: [site.instagram],
     areaServed: site.areas.map((name) => ({ "@type": "City", name })),
     address: {
       "@type": "PostalAddress",
@@ -20,20 +21,20 @@ export function LocalBusinessJsonLd() {
       addressLocality: contact.city,
       addressCountry: "BE",
     },
-    openingHoursSpecification: [
-      {
+    // Geen winkel: we werken op de werf en zijn telefonisch bereikbaar, dus ContactPoint i.p.v. openingsuren.
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      telephone: contact.tel,
+      email: contact.email,
+      availableLanguage: "nl",
+      hoursAvailable: {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "07:00",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        opens: "09:00",
         closes: "17:00",
       },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Saturday",
-        opens: "08:00",
-        closes: "12:00",
-      },
-    ],
+    },
   };
   return (
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />

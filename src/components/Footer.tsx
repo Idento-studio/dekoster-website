@@ -94,8 +94,14 @@ export function Footer() {
               {contact.email}
             </a>
           </p>
+          <p className="flex gap-3">
+            <Icon name="instagram" className="h-5 w-5 shrink-0 text-lime" />
+            <a href={site.instagram} target="_blank" rel="noopener" className="hover:text-lime">
+              Instagram
+            </a>
+          </p>
         </Col>
-        <Col title="Openingsuren">
+        <Col title="Telefonisch bereikbaar">
           {contact.hours.map(([d, h]) => (
             <p key={d} className="flex justify-between gap-4 tabular-nums">
               <span>{d}</span>
