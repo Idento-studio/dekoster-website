@@ -44,7 +44,6 @@ export function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-
   return (
     <header
       className={`sticky top-0 z-50 bg-linen/95 backdrop-blur transition-all duration-300 ${scrolled ? "shadow-[0_6px_30px_-12px_rgba(77,90,43,.35)]" : ""}`}

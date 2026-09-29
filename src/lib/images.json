@@ -1,128 +1,74 @@
 {
   "aanleg": {
-    "widths": [
-      640,
-      800
-    ],
+    "widths": [640, 800],
     "ratio": 1.5038
   },
   "boorden": {
-    "widths": [
-      640,
-      800
-    ],
+    "widths": [640, 800],
     "ratio": 1.5038
   },
   "duo-maaier": {
-    "widths": [
-      640,
-      800
-    ],
+    "widths": [640, 800],
     "ratio": 1.5038
   },
   "duo-tuin": {
-    "widths": [
-      640,
-      1200
-    ],
+    "widths": [640, 1200],
     "ratio": 1.5
   },
   "gazon": {
-    "widths": [
-      640,
-      800
-    ],
+    "widths": [640, 800],
     "ratio": 1.5038
   },
   "grondwerken-groot": {
-    "widths": [
-      640,
-      1200
-    ],
+    "widths": [640, 1200],
     "ratio": 1.5
   },
   "grondwerken": {
-    "widths": [
-      640,
-      800
-    ],
+    "widths": [640, 800],
     "ratio": 1.5038
   },
   "haag-groot": {
-    "widths": [
-      640,
-      1200
-    ],
+    "widths": [640, 1200],
     "ratio": 1.5
   },
   "haag-rug": {
-    "widths": [
-      640,
-      800
-    ],
+    "widths": [640, 800],
     "ratio": 1.5038
   },
   "infra-groot": {
-    "widths": [
-      640,
-      1200
-    ],
+    "widths": [640, 1200],
     "ratio": 1.5
   },
   "infra": {
-    "widths": [
-      640,
-      800
-    ],
+    "widths": [640, 800],
     "ratio": 1.5038
   },
   "jaro-cutout": {
-    "widths": [
-      640,
-      990
-    ],
+    "widths": [640, 990],
     "ratio": 0.6188
   },
   "maaien": {
-    "widths": [
-      640,
-      800
-    ],
+    "widths": [640, 800],
     "ratio": 1.5038
   },
   "snoei": {
-    "widths": [
-      640,
-      800
-    ],
+    "widths": [640, 800],
     "ratio": 1.5038
   },
   "terras": {
-    "widths": [
-      640,
-      800
-    ],
+    "widths": [640, 800],
     "ratio": 1.7778
   },
   "totaal": {
-    "widths": [
-      640,
-      800
-    ],
+    "widths": [640, 800],
     "ratio": 1.5038
   },
   "trimmen": {
-    "widths": [
-      640,
-      800
-    ],
+    "widths": [640, 800],
     "ratio": 1.5038
   },
   "woning": {
-    "widths": [
-      640,
-      800
-    ],
+    "widths": [640, 800],
     "ratio": 1.7778
   }
 }
