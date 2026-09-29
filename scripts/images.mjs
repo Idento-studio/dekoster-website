@@ -16,7 +16,9 @@ for (const file of await readdir(SRC)) {
   const name = path.parse(file).name;
   const img = sharp(path.join(SRC, file));
   const { width, height } = await img.metadata();
-  const widths = WIDTHS.filter((w) => w < width).concat(width).filter((w, i, a) => a.indexOf(w) === i);
+  const widths = WIDTHS.filter((w) => w < width)
+    .concat(width)
+    .filter((w, i, a) => a.indexOf(w) === i);
   for (const w of widths) {
     await sharp(path.join(SRC, file))
       .resize({ width: w })
