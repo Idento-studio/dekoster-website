@@ -2,6 +2,7 @@ import Link from "next/link";
 import { company, contact, OFFERTE, site } from "@/lib/content";
 import { Icon } from "./Icon";
 import { BackToTop } from "./BackToTop";
+import { CookieSettingsButton } from "./CookieConsent";
 import { CurrentYear } from "./CurrentYear";
 import { WaveDivider } from "./WaveDivider";
 
@@ -112,7 +113,7 @@ export function Footer() {
         </span>
         {/* TODO (OPENSTAAND): privacy-, cookie- en voorwaardenpagina's */}
         <span>
-          Privacy · Cookies · Algemene voorwaarden
+          Privacy · <CookieSettingsButton /> · Algemene voorwaarden
           <span className="mt-1 block sm:mt-0 sm:ml-3 sm:inline">
             Webdesign by{" "}
             <a
