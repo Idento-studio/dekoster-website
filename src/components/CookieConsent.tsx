@@ -30,7 +30,7 @@ export function CookieConsent() {
         <div
           role="dialog"
           aria-label="Cookies"
-          className="fixed inset-x-4 bottom-4 z-[55] mx-auto max-w-[480px] animate-rise rounded-card bg-sand p-6 shadow-[0_24px_60px_-20px_rgba(26,26,20,.55)]"
+          className="fixed inset-x-4 bottom-4 z-[55] animate-rise rounded-card bg-sand p-6 shadow-[0_24px_60px_-20px_rgba(26,26,20,.55)] sm:right-auto sm:max-w-[440px]"
         >
           <p className="font-display text-[19px] font-bold text-forest">Cookies</p>
           <p className="mt-2 text-[15px] leading-[1.6]">
