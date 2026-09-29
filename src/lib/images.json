@@ -1,13 +1,81 @@
 {
+  "aanleg-parking-gentbrugge-001": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "aanleg-parking-gentbrugge-002": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "aanleg-parking-gentbrugge-003": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "aanleg-parking-gentbrugge-004": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "aanleg-parking-gentbrugge-005": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "aanleg-parking-gentbrugge-009": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "aanleg-parking-gentbrugge-010": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "aanleg-top-kortrijk-001": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "aanleg-top-kortrijk-002": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "aanleg-top-kortrijk-004": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "aanleg-top-kortrijk-005": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "aanleg-top-kortrijk-007": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "aanleg-top-kortrijk-008": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
   "aanleg": {
     "widths": [640, 800],
     "ratio": 1.5038
   },
-  "boorden": {
-    "widths": [640, 800],
-    "ratio": 1.5038
+  "aanplantingen-tuin-en-voortuin-001": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
   },
-  "duo-maaier": {
+  "aanplantingen-tuin-en-voortuin-003": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "aanplantingen-tuin-en-voortuin-004": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "aanplantingen-tuin-en-voortuin-007": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "aanplantingen-tuin-en-voortuin-008": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "boorden": {
     "widths": [640, 800],
     "ratio": 1.5038
   },
@@ -18,6 +86,134 @@
   "gazon": {
     "widths": [640, 800],
     "ratio": 1.5038
+  },
+  "grond-en-graafwerken-001": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "grond-en-graafwerken-002": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "grond-en-graafwerken-004": {
+    "widths": [640, 1170],
+    "ratio": 0.5625
+  },
+  "grond-en-graafwerken-008": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "grond-en-graafwerken-011": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "grond-en-graafwerken-014": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "grond-en-graafwerken-015": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "grond-en-graafwerken-017": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "grond-en-graafwerken-018": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "grondwerken-en-riolering-drongen-005": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "grondwerken-en-riolering-drongen-025": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "grondwerken-en-riolering-drongen-028": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "grondwerken-en-riolering-drongen-036": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "grondwerken-en-riolering-drongen-038": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "grondwerken-en-riolering-drongen-044": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "grondwerken-en-riolering-drongen-050": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "grondwerken-en-riolering-drongen-052": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "grondwerken-en-riolering-drongen-062": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "grondwerken-en-riolering-drongen-065": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "grondwerken-en-riolering-drongen-068": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "grondwerken-en-terras-drongen-011": {
+    "widths": [640, 1200],
+    "ratio": 0.75
+  },
+  "grondwerken-en-terras-drongen-013": {
+    "widths": [640, 1200],
+    "ratio": 0.75
+  },
+  "grondwerken-en-terras-drongen-016": {
+    "widths": [640, 1200],
+    "ratio": 0.75
+  },
+  "grondwerken-en-terras-drongen-018": {
+    "widths": [640, 1200],
+    "ratio": 0.75
+  },
+  "grondwerken-en-terras-drongen-025": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "grondwerken-en-terras-drongen-027": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "grondwerken-en-terras-drongen-032": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "grondwerken-en-terras-drongen-042": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "grondwerken-en-terras-drongen-045": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "grondwerken-en-terras-drongen-050": {
+    "widths": [640, 1200],
+    "ratio": 0.75
+  },
+  "grondwerken-en-terras-drongen-053": {
+    "widths": [640, 1200],
+    "ratio": 0.75
+  },
+  "grondwerken-en-terras-drongen-056": {
+    "widths": [640, 1200],
+    "ratio": 0.75
   },
   "grondwerken-groot": {
     "widths": [640, 1200],
@@ -31,9 +227,53 @@
     "widths": [640, 1200],
     "ratio": 1.5
   },
-  "haag-rug": {
-    "widths": [640, 800],
-    "ratio": 1.5038
+  "hoektuin-met-afsluiting-eeklo-001": {
+    "widths": [640, 1200],
+    "ratio": 0.75
+  },
+  "hoektuin-met-afsluiting-eeklo-003": {
+    "widths": [640, 1200],
+    "ratio": 0.75
+  },
+  "hoektuin-met-afsluiting-eeklo-006": {
+    "widths": [640, 768],
+    "ratio": 0.75
+  },
+  "hoektuin-met-afsluiting-eeklo-018": {
+    "widths": [640, 1200, 1600],
+    "ratio": 1.7778
+  },
+  "hoektuin-met-afsluiting-eeklo-033": {
+    "widths": [640, 1200, 1280],
+    "ratio": 1.7778
+  },
+  "hoektuin-met-afsluiting-eeklo-040": {
+    "widths": [640, 1152],
+    "ratio": 0.5625
+  },
+  "hoektuin-met-afsluiting-eeklo-063": {
+    "widths": [640, 1200, 1920, 2048],
+    "ratio": 1.7778
+  },
+  "hoektuin-met-afsluiting-eeklo-065": {
+    "widths": [640, 1152],
+    "ratio": 0.5625
+  },
+  "hoektuin-met-afsluiting-eeklo-074": {
+    "widths": [640, 1200, 1920, 2048],
+    "ratio": 1.7778
+  },
+  "hoektuin-met-afsluiting-eeklo-075": {
+    "widths": [640, 1200, 1920, 2048],
+    "ratio": 1.7778
+  },
+  "hoektuin-met-afsluiting-eeklo-079": {
+    "widths": [640, 1200, 1600],
+    "ratio": 1.7778
+  },
+  "hoektuin-met-afsluiting-eeklo-080": {
+    "widths": [640, 1152],
+    "ratio": 0.5625
   },
   "infra-groot": {
     "widths": [640, 1200],
@@ -51,24 +291,392 @@
     "widths": [640, 800],
     "ratio": 1.5038
   },
-  "snoei": {
-    "widths": [640, 800],
-    "ratio": 1.5038
+  "opritten-kasseien-002": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
   },
-  "terras": {
-    "widths": [640, 800],
+  "opritten-kasseien-003": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "opritten-kasseien-005": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "opritten-kasseien-008": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "opritten-kasseien-009": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "opritten-kasseien-010": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "opritten-kasseien-014": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "opritten-kasseien-016": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "opritten-kasseien-018": {
+    "widths": [640, 1200, 1920, 2400],
     "ratio": 1.7778
+  },
+  "opritten-kasseien-019": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "opritten-kasseien-021": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "poolhouse-en-poort-waarschoot-002": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "poolhouse-en-poort-waarschoot-003": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "poolhouse-en-poort-waarschoot-008": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "poolhouse-en-poort-waarschoot-011": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "poolhouse-en-poort-waarschoot-019": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "poolhouse-en-poort-waarschoot-020": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "poolhouse-en-poort-waarschoot-021": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "poolhouse-en-poort-waarschoot-025": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "poolhouse-en-poort-waarschoot-032": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "poolhouse-en-poort-waarschoot-038": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "poolhouse-en-poort-waarschoot-043": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "poolhouse-en-poort-waarschoot-045": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "stadstuin-nieuw-gent-tuinhuis-pergola-001": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "stadstuin-nieuw-gent-tuinhuis-pergola-003": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "stadstuin-nieuw-gent-tuinhuis-pergola-006": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "stadstuin-nieuw-gent-tuinhuis-pergola-010": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "stadstuin-nieuw-gent-tuinhuis-pergola-012": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "stadstuin-nieuw-gent-tuinhuis-pergola-016": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "stadstuin-nieuw-gent-tuinhuis-pergola-018": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "stadstuin-nieuw-gent-tuinhuis-pergola-021": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "stadstuin-nieuw-gent-tuinhuis-pergola-025": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "stadstuin-nieuw-gent-tuinhuis-pergola-029": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "stadstuin-nieuw-gent-tuinhuis-pergola-032": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "stadstuin-nieuw-gent-tuinhuis-pergola-033": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "terras-en-riolering-evergem-001": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "terras-en-riolering-evergem-004": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "terras-en-riolering-evergem-009": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "terras-en-riolering-evergem-012": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "terras-en-riolering-evergem-016": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "terras-en-riolering-evergem-019": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "terras-en-riolering-evergem-022": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "terras-en-riolering-evergem-024": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "terras-en-riolering-evergem-027": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "terras-en-riolering-evergem-029": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "terras-en-riolering-evergem-031": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "terras-en-riolering-evergem-032": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
   },
   "totaal": {
     "widths": [640, 800],
     "ratio": 1.5038
   },
-  "trimmen": {
-    "widths": [640, 800],
-    "ratio": 1.5038
-  },
-  "woning": {
-    "widths": [640, 800],
+  "tuinaanleg-nazareth-001": {
+    "widths": [640, 1200, 1920, 2400],
     "ratio": 1.7778
+  },
+  "tuinaanleg-nazareth-004": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "tuinaanleg-nazareth-007": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "tuinaanleg-nazareth-010": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "tuinaanleg-nazareth-012": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "tuinaanleg-nazareth-014": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "tuinaanleg-nazareth-017": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "tuinaanleg-nazareth-018": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "tuinrenovatie-nieuw-gazon-eeklo-005": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "tuinrenovatie-nieuw-gazon-eeklo-011": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "tuinrenovatie-nieuw-gazon-eeklo-012": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "tuinrenovatie-nieuw-gazon-eeklo-015": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "tuinrenovatie-nieuw-gazon-eeklo-022": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "tuinrenovatie-nieuw-gazon-eeklo-024": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "tuinrenovatie-nieuw-gazon-eeklo-026": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "tuinrenovatie-nieuw-gazon-eeklo-029": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "tuinrenovatie-nieuw-gazon-eeklo-031": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "tuinrenovatie-nieuw-gazon-eeklo-033": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "tuinrenovatie-nieuw-gazon-eeklo-035": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "villatuin-destelbergen-001": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "villatuin-destelbergen-002": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "villatuin-destelbergen-004": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "villatuin-destelbergen-007": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "villatuin-destelbergen-010": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "villatuin-destelbergen-013": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "villatuin-destelbergen-020": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "villatuin-destelbergen-023": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "villatuin-destelbergen-031": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "villatuin-destelbergen-039": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.3333
+  },
+  "villatuin-destelbergen-046": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "villatuin-destelbergen-049": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "villatuin-destelbergen-053": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "wegenwerken-ternat-002": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "wegenwerken-ternat-004": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "wegenwerken-ternat-013": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "wegenwerken-ternat-016": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "wegenwerken-ternat-018": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "wegenwerken-ternat-019": {
+    "widths": [640, 1200, 1350],
+    "ratio": 0.5625
+  },
+  "wegenwerken-ternat-021": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "wegenwerken-ternat-023": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "westerschelde-tunnel-antwerpen-003": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "westerschelde-tunnel-antwerpen-004": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "westerschelde-tunnel-antwerpen-005": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "westerschelde-tunnel-antwerpen-007": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "westerschelde-tunnel-antwerpen-008": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "westerschelde-tunnel-antwerpen-011": {
+    "widths": [640, 1200, 1920, 2400],
+    "ratio": 1.7778
+  },
+  "westerschelde-tunnel-antwerpen-018": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "westerschelde-tunnel-antwerpen-020": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
+  },
+  "westerschelde-tunnel-antwerpen-021": {
+    "widths": [640, 1200, 1800],
+    "ratio": 0.75
   }
 }

@@ -36,7 +36,7 @@ export function RealisatiesGrid() {
       </div>
 
       {list.length ? (
-        <div key={filter} className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div key={filter} className="mt-10 grid auto-rows-fr gap-10 md:grid-cols-2 lg:grid-cols-3">
           {list.map((p, i) => (
             <div key={p.slug} className="animate-rise" style={{ animationDelay: `${i * 80}ms` }}>
               <ProjectCard project={p} />

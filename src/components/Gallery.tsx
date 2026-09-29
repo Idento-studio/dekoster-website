@@ -78,7 +78,7 @@ export function Gallery({ photos }: { photos: Photo[] }) {
             </button>
           </div>
           <div
-            className="relative flex flex-1 items-center justify-center px-4 pb-6"
+            className="relative min-h-0 flex-1 px-4 pb-4"
             onClick={(e) => e.target === e.currentTarget && setOpen(null)}
           >
             <Foto
@@ -86,7 +86,7 @@ export function Gallery({ photos }: { photos: Photo[] }) {
               src={photos[open].src}
               alt={photos[open].alt}
               priority
-              className="max-h-full max-w-full animate-rise rounded-xl object-contain"
+              className="pointer-events-none h-full w-full animate-rise object-contain"
             />
             <button
               onClick={() => go(-1)}
@@ -103,7 +103,9 @@ export function Gallery({ photos }: { photos: Photo[] }) {
               <Icon name="arrowRight" className="h-5 w-5" />
             </button>
           </div>
-          <p className="px-5 pb-6 text-center text-[14px] text-sand/75">{photos[open].alt}</p>
+          <p className="shrink-0 px-5 pb-6 text-center text-[14px] text-sand/75">
+            {photos[open].alt}
+          </p>
         </div>
       )}
     </>

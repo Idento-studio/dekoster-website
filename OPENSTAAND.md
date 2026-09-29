@@ -4,12 +4,12 @@ Wat nog bevestigd of aangeleverd moet worden voor livegang.
 
 ## Bij de klant (Jaro)
 
-- [ ] **Contactgegevens**: live footer (Industrieweg 12, 1500 Halle · +32 2 345 67 89) en live contactpagina (Straatnaam 99, 1000 Gemeente · 04 12 34 56 78) verschillen. Echte adres, telefoon, btw-/ondernemingsnummer?
-- [ ] Werkgebied: site zegt nu "Gent en omstreken" — klopt dat met het adres?
+- [ ] **Contactgegevens**: adres (Molenstraat 226 bus 101, 9900 Eeklo), ondernemings- en btw-nummer zijn ingevuld. Nog te bevestigen: telefoonnummer en openingsuren (nu placeholders).
+- [ ] Werkgebied: site zegt nu "Gent en omstreken" — het adres is nu Eeklo, klopt dat?
 - [ ] Naam en functie onder "Over ons": nu "Jaro De Koster · zaakvoerder"
 - [ ] "25+ jaar vakmanschap" bevestigen
-- [ ] Totaaltuin Gent: echte titel, jaar, omschrijving en type werk (nu voorbeeldtekst)
-- [ ] Villatuin Dworp en Totaaltuin Halle: echte foto's + gegevens (nu stockfoto's `terras`, `woning`)
+- [ ] Projecten (16 stuks uit `assets/projecten`): teksten, titels en categorieën zijn door Claude ingeschat op basis van de foto's. Nalezen door Jaro. Jaartal staat overal op 2026. Bij "Aanplantingen", "Opritten Kasseien" en "Grond en graafwerken" is geen plaats bekend (staat als "Gent en omstreken").
+- [ ] Foto op de projectkaarten met herkenbare personen (o.a. Drongen, Nieuw-Gent) laten goedkeuren
 - [ ] Projecten voor Infra en Grondwerken
 - [ ] Toestemming voor de foto's van de collega (portret/duo)
 
@@ -23,3 +23,5 @@ Wat nog bevestigd of aangeleverd moet worden voor livegang.
 - [ ] OG-beeld 1200×630 op maat
 - [ ] Keuze hero: bestaande hero of een van de drie gedurfde varianten (Artifact "De Koster Hero Opties")
 - [ ] Launch-checklist doorlopen
+- [ ] Analytics (GA4 `G-M5D8X2RHFH`) staat aan zonder cookiebanner: cookiebeleid/toestemming regelen vóór livegang
+- [ ] Contactformulier post naar Formspree (`xppwbaqr`); offertewizard gebruikt nog `NEXT_PUBLIC_OFFERTE_WEBHOOK_URL` (n8n)

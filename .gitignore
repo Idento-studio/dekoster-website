@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ruwe projectfoto's (2 GB, HEIC/video); enkel de gekozen foto's staan in assets/originals
+/assets/projecten/

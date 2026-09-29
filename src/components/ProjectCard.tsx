@@ -8,7 +8,7 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
     <Link
       href={projectHref(project)}
       data-reveal={index}
-      className="group overflow-hidden rounded-card bg-stone"
+      className="group flex h-full flex-col overflow-hidden rounded-card bg-stone transition duration-300 hover:shadow-[0_20px_40px_-24px_rgba(86,75,63,.45)]"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <Foto
@@ -21,7 +21,7 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
           <Icon name="arrow" className="h-5 w-5" />
         </span>
       </div>
-      <div className="flex items-end justify-between gap-4 p-6">
+      <div className="flex flex-1 items-end justify-between gap-4 p-6">
         <div>
           <span className="font-mono text-[11px] tracking-[3px] text-sage uppercase">
             {project.category}
