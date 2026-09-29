@@ -1,23 +1,13 @@
 import Link from "next/link";
-import { contact, OFFERTE } from "@/lib/content";
+import { OFFERTE } from "@/lib/content";
 import { Foto } from "./Foto";
 import { Icon } from "./Icon";
-import { Parallax } from "./Parallax";
 import { WaveDivider } from "./WaveDivider";
 
-type PageHeroProps = {
-  image: string;
-  alt?: string;
-  eyebrow?: string;
-  title: React.ReactNode;
-  lead?: string;
-  actions?: boolean;
-  /** kleur van de sectie eronder (voor de golfrand) */
-  next?: string;
-  compact?: boolean;
-};
+/** Vaste mask voor de dienstfoto: afgeronde hoek als wegbocht. */
+const HERO_MASK = "rounded-[28px_28px_28px_220px]";
 
-/** Hero voor subpagina's: foto met parallax, titel, lead, knoppen en golfrand. */
+/** Hero voor subpagina's: titel links, foto in een mask rechts, op sand met golfrand naar linen. */
 export function PageHero({
   image,
   alt = "",
@@ -25,44 +15,50 @@ export function PageHero({
   title,
   lead,
   actions = true,
-  next = "#F7F5F0",
-  compact = false,
-}: PageHeroProps) {
+}: {
+  image: string;
+  alt?: string;
+  eyebrow: string;
+  title: string;
+  lead: string;
+  actions?: boolean;
+}) {
   return (
-    <section className="relative isolate overflow-hidden bg-forest">
-      <Parallax className="absolute inset-0 -z-10">
-        <Foto src={image} alt={alt} priority className="h-full w-full object-cover" />
-      </Parallax>
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/80 via-ink/45 to-ink/10" />
-      <div
-        className={`wrap ${compact ? "pt-24 pb-32 sm:pt-28 sm:pb-40" : "pt-28 pb-40 sm:pt-40 sm:pb-52"}`}
-      >
-        {eyebrow && (
-          <span className="inline-flex animate-rise rounded-full bg-lime px-4 py-2 font-mono text-[11px] tracking-[3px] text-forest uppercase">
-            {eyebrow}
-          </span>
-        )}
-        <h1 className="mt-6 max-w-[760px] animate-rise text-[40px] leading-[1.03] font-semibold tracking-[-1.5px] text-white [animation-delay:.1s] sm:text-[56px] lg:text-[64px]">
-          {title}
-        </h1>
-        {lead && (
-          <p className="mt-6 max-w-[48ch] animate-rise text-[17px] leading-[1.7] text-white/90 [animation-delay:.2s]">
+    <section className="bg-sand">
+      <div className="wrap grid items-center gap-10 pt-8 pb-10 sm:pt-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:pb-12">
+        <div>
+          <span className="eyebrow animate-rise">{eyebrow}</span>
+          <h1 className="mt-5 animate-rise text-[40px] leading-[1.03] font-semibold tracking-[-1.5px] text-forest [animation-delay:.1s] sm:text-[56px] lg:text-[64px]">
+            {title}
+          </h1>
+          <p className="mt-6 max-w-[48ch] animate-rise text-[17px] leading-[1.7] [animation-delay:.2s]">
             {lead}
           </p>
-        )}
-        {actions && (
-          <div className="mt-10 flex animate-rise flex-wrap gap-4 [animation-delay:.3s]">
-            <Link href={OFFERTE} className="btn-lime">
-              Gratis adviesgesprek
-            </Link>
-            <a href={`tel:${contact.tel}`} className="btn-ghost">
-              Bel ons
-            </a>
-          </div>
-        )}
+          {actions && (
+            <div className="mt-10 flex animate-rise flex-wrap gap-4 [animation-delay:.3s]">
+              <Link href={OFFERTE} className="btn-lime">
+                Gratis offerte aanvragen
+              </Link>
+              <Link href="/contact/" className="btn-outline">
+                Contacteer ons
+              </Link>
+            </div>
+          )}
+        </div>
+        <div
+          className={`relative mx-auto aspect-[4/3] w-full max-w-[520px] animate-rise overflow-hidden bg-stone shadow-[0_24px_50px_-24px_rgba(26,26,20,.45)] [animation-delay:.15s] lg:aspect-auto lg:h-[380px] lg:max-w-none ${HERO_MASK}`}
+        >
+          <Foto
+            src={image}
+            alt={alt}
+            priority
+            sizes="(min-width: 1024px) 600px, 90vw"
+            className="h-full w-full object-cover"
+          />
+        </div>
       </div>
-      <div className="absolute inset-x-0 -bottom-px">
-        <WaveDivider edge="bottom" fill={next} className="h-[60px] sm:h-[100px]" />
+      <div className="-mb-px">
+        <WaveDivider edge="bottom" fill="#F7F5F0" className="h-[60px] sm:h-[100px]" />
       </div>
     </section>
   );

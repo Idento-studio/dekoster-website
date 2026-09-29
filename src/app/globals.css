@@ -22,7 +22,6 @@
 
   --animate-kenburns: kenburns 9s ease-out both;
   --animate-rise: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  --animate-sway: sway 5s ease-in-out infinite;
 
   @keyframes kenburns {
     from {
@@ -40,15 +39,6 @@
     to {
       opacity: 1;
       transform: none;
-    }
-  }
-  @keyframes sway {
-    0%,
-    100% {
-      transform: rotate(-4deg);
-    }
-    50% {
-      transform: rotate(4deg);
     }
   }
 }
@@ -76,7 +66,7 @@
  * Herbruikbare componentklassen
  * ------------------------------------------------------------------ */
 @utility wrap {
-  @apply mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8;
+  @apply mx-auto w-full max-w-[1450px] px-4 sm:px-6 lg:px-8;
 }
 @utility eyebrow {
   @apply inline-flex items-center gap-3 font-body text-xs font-bold tracking-[4px] text-forest uppercase;

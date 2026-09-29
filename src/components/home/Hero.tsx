@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { contact, OFFERTE } from "@/lib/content";
+import { OFFERTE } from "@/lib/content";
 import { Foto } from "../Foto";
 import { WaveDivider } from "../WaveDivider";
 
@@ -22,16 +22,16 @@ export function Hero() {
           persoonlijk verzorgd.
         </h1>
         <p className="mt-6 max-w-[400px] animate-rise text-[16px] leading-[1.7] text-white/90 [animation-delay:.15s]">
-          Van eerste gesprek tot seizoensgebonden onderhoud — één aanspreekpunt voor uw volledige
+          Van eerste gesprek tot seizoensgebonden onderhoud met één aanspreekpunt voor uw volledige
           buitenruimte.
         </p>
         <div className="mt-10 flex animate-rise flex-wrap gap-4 [animation-delay:.3s]">
           <Link href={OFFERTE} className="btn-lime">
-            Gratis offerte
+            Gratis offerte aanvragen
           </Link>
-          <a href={`tel:${contact.tel}`} className="btn-ghost">
-            Bel ons
-          </a>
+          <Link href="/contact/" className="btn-ghost">
+            Contacteer ons
+          </Link>
         </div>
       </div>
 

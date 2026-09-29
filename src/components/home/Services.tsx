@@ -25,7 +25,7 @@ export function Services() {
             </h3>
             <p className="max-w-[46ch] text-[16px] leading-[1.7] text-sand/85">
               Ik teken uw tuin persoonlijk uit en begeleid de volledige aanleg. Terrassen,
-              beplanting, waterpartijen — alles in één hand.
+              beplanting, waterpartijen: alles in één hand.
             </p>
             <Link href="/tuinaanleg/" className="mt-2 btn-lime self-start">
               Meer info{" "}

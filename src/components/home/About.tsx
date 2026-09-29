@@ -20,7 +20,7 @@ export function About() {
           </h2>
           <div className="mt-6 max-w-[52ch] space-y-4 text-[16px] leading-[1.7]">
             <p>
-              Ik ben geen groot bedrijf — en dat is bewust. Bij De Koster werk je rechtstreeks met
+              Ik ben geen groot bedrijf, en dat is bewust. Bij De Koster werk je rechtstreeks met
               mij samen. Ik luister naar uw wensen, teken uw tuin persoonlijk uit en begeleid het
               volledige project.
             </p>
@@ -76,10 +76,9 @@ export function About() {
           </div>
           <div className={layer} data-depth="46">
             <div className="absolute bottom-[18%] left-0 rounded-card bg-forest px-5 py-4 text-lime shadow-xl">
-              <span className="block font-display text-[34px] leading-none font-bold">
-                {site.since}
+              <span className="block font-display text-[22px] leading-none font-bold sm:text-[26px]">
+                Jaro De Koster
               </span>
-              <span className="mt-1 block text-[12px] font-medium text-sand">jaar vakmanschap</span>
             </div>
             <span className="absolute top-[16%] right-[2%] rounded-full bg-linen px-4 py-2.5 font-mono text-[11px] tracking-[3px] text-forest uppercase shadow-[0_10px_24px_-12px_rgba(0,0,0,.4)]">
               {site.region}

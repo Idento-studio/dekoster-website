@@ -1,5 +1,8 @@
+/** Formspree-endpoint van het contactformulier (JSON-POST, geen extra pakket nodig). */
+export const FORMSPREE_CONTACT = "https://formspree.io/f/xppwbaqr";
+
 /**
- * Verstuurt een formulier naar een n8n-webhook (statische site → rechtstreeks vanuit de browser).
+ * Verstuurt een formulier naar een webhook (n8n of Formspree) (statische site → rechtstreeks vanuit de browser).
  * Spambescherming zonder reCAPTCHA (launch-checklist §9): honeypot-veld + tijdsdrempel.
  */
 export type SubmitResult =
@@ -19,7 +22,7 @@ export async function submitToWebhook(
   try {
     const res = await fetch(url, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify(payload),
     });
     return res.ok ? { ok: true } : { ok: false, reason: "network" };

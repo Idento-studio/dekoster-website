@@ -7,12 +7,12 @@ import { nav, OFFERTE, site } from "@/lib/content";
 import { useScrolled } from "@/lib/hooks";
 import { Icon, Mark } from "./Icon";
 
-export function Logo({ light = false }: { light?: boolean }) {
+function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link
       href="/"
       className={`flex items-center gap-3 ${light ? "text-sand" : "text-forest"}`}
-      aria-label={`${site.name} — home`}
+      aria-label={`${site.name}, home`}
     >
       <Mark className="h-9 w-auto sm:h-11" />
       <span className="leading-none">

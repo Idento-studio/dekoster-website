@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { contact, OFFERTE, site } from "@/lib/content";
+import { company, contact, OFFERTE, site } from "@/lib/content";
 import { Icon } from "./Icon";
 import { BackToTop } from "./BackToTop";
+import { CurrentYear } from "./CurrentYear";
 import { WaveDivider } from "./WaveDivider";
 
 /** Afsluitende call-to-action boven de footer. */
@@ -26,11 +27,11 @@ export function CallToAction({ title }: { title?: React.ReactNode }) {
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Link href={OFFERTE} className="btn-lime">
-            Gratis offerte
+            Gratis offerte aanvragen
           </Link>
-          <a href={`tel:${contact.tel}`} className="btn-ghost">
-            Bel ons
-          </a>
+          <Link href="/contact/" className="btn-ghost">
+            Contacteer ons
+          </Link>
         </div>
       </div>
     </section>
@@ -65,7 +66,7 @@ export function Footer() {
             infra · grondwerken · tuinaanleg &amp; onderhoud
           </p>
           <p className="mt-5 max-w-[34ch] leading-[1.7]">
-            {site.tagline} — al meer dan 25 jaar uw partner voor duurzame buitenruimtes.
+            {site.tagline}. Al meer dan 25 jaar uw partner voor duurzame buitenruimtes.
           </p>
         </div>
         <Col title="Navigatie">
@@ -104,10 +105,26 @@ export function Footer() {
       </div>
       <div className="wrap flex flex-wrap justify-between gap-3 border-t border-white/10 py-6 text-[13px] text-sand/60">
         <span>
-          © {new Date().getFullYear()} {site.legalName}. Alle rechten voorbehouden.
+          © <CurrentYear /> {site.legalName}. Alle rechten voorbehouden.
+          <span className="mt-1 block sm:mt-0 sm:ml-3 sm:inline">
+            Ondernemingsnr. {company.enterpriseNumber} · BTW {company.vat}
+          </span>
         </span>
         {/* TODO (OPENSTAAND): privacy-, cookie- en voorwaardenpagina's */}
-        <span>Privacy · Cookies · Algemene voorwaarden</span>
+        <span>
+          Privacy · Cookies · Algemene voorwaarden
+          <span className="mt-1 block sm:mt-0 sm:ml-3 sm:inline">
+            Webdesign by{" "}
+            <a
+              href="https://idento.be/"
+              target="_blank"
+              rel="noopener"
+              className="text-sand underline-offset-4 transition hover:text-lime hover:underline"
+            >
+              Idento
+            </a>
+          </span>
+        </span>
       </div>
       <BackToTop />
     </footer>

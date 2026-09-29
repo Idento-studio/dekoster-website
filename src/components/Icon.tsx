@@ -166,12 +166,6 @@ const icons = {
       <path d="M3 10h18M8 3v4M16 3v4" />
     </>
   ),
-  ruler: (
-    <>
-      <path d="M3 17 17 3l4 4L7 21l-4-4Z" />
-      <path d="m7 13 2 2M10 10l2 2M13 7l2 2" />
-    </>
-  ),
   camera: (
     <>
       <path d="M4 8h3l2-3h6l2 3h3v12H4V8Z" />
@@ -192,12 +186,6 @@ const icons = {
       <circle cx="8" cy="11" r="4" />
       <path d="M16 20v-6" />
       <path d="M13 14h6l-3-6-3 6Z" />
-    </>
-  ),
-  fence: (
-    <>
-      <path d="M5 21V6l2-2 2 2v15M15 21V6l2-2 2 2v15" />
-      <path d="M3 10h18M3 16h18" />
     </>
   ),
   copy: (

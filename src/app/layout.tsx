@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { RevealObserver } from "@/components/RevealObserver";
@@ -29,8 +30,8 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.legalName} — tuinaanleg, grondwerken en infra`,
-    template: `%s — ${site.name}`,
+    default: `${site.legalName} | tuinaanleg, grondwerken en infra`,
+    template: `%s | ${site.name}`,
   },
   description: site.description,
   openGraph: {
@@ -58,6 +59,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main id="inhoud">{children}</main>
         <Footer />
+        {process.env.NODE_ENV === "production" && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${site.gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","${site.gaId}");`}
+            </Script>
+          </>
+        )}
         <RevealObserver />
       </body>
     </html>

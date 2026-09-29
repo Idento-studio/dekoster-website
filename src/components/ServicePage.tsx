@@ -2,7 +2,7 @@ import Link from "next/link";
 import { projects, site, type ServicePageData } from "@/lib/content";
 import { Foto } from "./Foto";
 import { Icon } from "./Icon";
-import { AllProjectsLink, ChallengeBand, PageHero, SectionHead } from "./PageParts";
+import { AllProjectsLink, ChallengeBand, SectionHead, PageHero } from "./PageParts";
 import { ProjectCard } from "./ProjectCard";
 
 /** Generieke dienstpagina (tuinaanleg, grondwerken, infra) — gestuurd door servicePages in content.ts */
@@ -16,7 +16,7 @@ export function ServicePage({ page }: { page: ServicePageData }) {
 
       {/* Onze aanpak */}
       <section className="bg-linen">
-        <div className="wrap grid items-center gap-14 pt-8 pb-24 lg:grid-cols-2">
+        <div className="wrap grid items-center gap-14 py-16 sm:py-24 lg:grid-cols-2">
           <div data-reveal>
             <span className="eyebrow">
               <Icon name="leaf" className="h-4 w-4" />
@@ -50,7 +50,7 @@ export function ServicePage({ page }: { page: ServicePageData }) {
           </div>
           <div
             data-reveal="1"
-            className="relative mx-auto h-[420px] w-full max-w-[520px] sm:h-[480px]"
+            className="relative mx-auto h-[420px] w-full max-w-[520px] sm:h-[480px] lg:order-first"
           >
             <Foto
               src={approach.images[0]}
@@ -72,31 +72,30 @@ export function ServicePage({ page }: { page: ServicePageData }) {
       </section>
 
       {/* Expertise */}
-      <section className="bg-forest py-20 text-sand sm:py-24">
+      <section className="bg-linen pb-20 sm:pb-24">
         <div className="wrap">
-          <SectionHead eyebrow="Onze expertise" title={expertiseTitle} light />
+          <SectionHead eyebrow="Onze expertise" title={expertiseTitle} />
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {expertise.map((e, i) => (
               <article
                 key={e.title}
                 data-reveal={i % 3}
-                className="group relative overflow-hidden rounded-card border border-white/10 bg-white/[.04] p-7 transition duration-300 hover:-translate-y-1 hover:border-lime/60 hover:bg-white/[.07]"
+                className="group relative overflow-hidden rounded-card bg-stone p-7 transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-24px_rgba(86,75,63,.45)]"
               >
-                <span className="absolute top-5 right-5 font-mono text-[11px] tracking-[2px] text-sand/35 tabular-nums">
+                <span className="absolute top-5 right-5 font-mono text-[11px] tracking-[2px] text-bark/40 tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="grid h-12 w-12 place-items-center rounded-full bg-lime text-forest transition duration-300 group-hover:scale-110 group-hover:rotate-[-8deg]">
                   <Icon name={e.icon} />
                 </span>
-                <h3 className="mt-6 text-[21px] font-bold text-white">{e.title}</h3>
-                <p className="mt-2 text-[15px] leading-[1.6] text-sand/80">{e.text}</p>
+                <h3 className="mt-6 text-[21px] font-bold text-forest">{e.title}</h3>
+                <p className="mt-2 text-[15px] leading-[1.6]">{e.text}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <div className="h-10 bg-linen" />
       <ChallengeBand />
 
       {/* Recente projecten */}
@@ -108,7 +107,7 @@ export function ServicePage({ page }: { page: ServicePageData }) {
             right={<AllProjectsLink />}
           />
           {related.length ? (
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="mt-12 grid auto-rows-fr gap-10 md:grid-cols-3">
               {related.map((p, i) => (
                 <ProjectCard key={p.slug} project={p} index={i} />
               ))}
