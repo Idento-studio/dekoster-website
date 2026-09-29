@@ -297,6 +297,8 @@ export function OfferteWizard() {
   const [honeypot, setHoneypot] = useState("");
   const [startedAt] = useState(() => Date.now());
   const [sending, setSending] = useState(false);
+  const [fileError, setFileError] = useState("");
+  const [sendError, setSendError] = useState("");
   const topRef = useRef<HTMLElement>(null);
   const set = <K extends keyof Answers>(k: K, v: Answers[K]) => setA((s) => ({ ...s, [k]: v }));
   const sz = seizoenen();
@@ -730,7 +732,9 @@ export function OfferteWizard() {
             <span className="font-display text-[18px] font-semibold text-forest">
               Kies foto&apos;s of een plan
             </span>
-            <span className="text-[14px] text-bark/70">JPG, PNG of PDF · max. 10 bestanden</span>
+            <span className="text-[14px] text-bark/70">
+              JPG, PNG of PDF · max. {MAX_FILES} bestanden · elk max. 25 MB
+            </span>
             <input
               id="o-fotos"
               type="file"
@@ -739,21 +743,35 @@ export function OfferteWizard() {
               className="sr-only"
               onChange={(e) => {
                 const picked = [...(e.target.files ?? [])];
-                if (picked.some((f) => f.size > MAX_FILE_BYTES))
-                  setToast("Een bestand is te groot (max. 25 MB) en werd overgeslagen.");
-                const files = picked
-                  .filter((f) => f.size <= MAX_FILE_BYTES)
-                  .map((f) => ({
-                    name: f.name,
-                    size: f.size,
-                    url: f.type.startsWith("image/") ? URL.createObjectURL(f) : null,
-                    file: f,
-                  }));
-                set("fotos", [...a.fotos, ...files].slice(0, MAX_FILES));
+                const tooBig = picked.filter((f) => f.size > MAX_FILE_BYTES);
+                const fits = picked.filter((f) => f.size <= MAX_FILE_BYTES);
+                const room = MAX_FILES - a.fotos.length;
+                const problems: string[] = [];
+                if (tooBig.length)
+                  problems.push(
+                    `${tooBig.map((f) => `"${f.name}"`).join(", ")} ${tooBig.length > 1 ? "zijn" : "is"} groter dan 25 MB en ${tooBig.length > 1 ? "werden" : "werd"} niet toegevoegd.`,
+                  );
+                if (fits.length > room)
+                  problems.push(
+                    `U kunt maximaal ${MAX_FILES} bestanden toevoegen. ${fits.length - Math.max(room, 0)} bestand${fits.length - Math.max(room, 0) > 1 ? "en" : ""} niet toegevoegd.`,
+                  );
+                setFileError(problems.join(" "));
+                const files = fits.slice(0, Math.max(room, 0)).map((f) => ({
+                  name: f.name,
+                  size: f.size,
+                  url: f.type.startsWith("image/") ? URL.createObjectURL(f) : null,
+                  file: f,
+                }));
+                set("fotos", [...a.fotos, ...files]);
                 e.target.value = "";
               }}
             />
           </label>
+          {fileError && (
+            <p role="alert" className="rounded-2xl bg-white px-4 py-3 text-[14px] text-[#870000]">
+              {fileError}
+            </p>
+          )}
           {a.fotos.length > 0 && (
             <div className="grid grid-cols-3 gap-3 sm:grid-cols-5">
               {a.fotos.map((f, n) => (
@@ -771,12 +789,13 @@ export function OfferteWizard() {
                   )}
                   <button
                     type="button"
-                    onClick={() =>
+                    onClick={() => {
+                      setFileError("");
                       set(
                         "fotos",
                         a.fotos.filter((_, x) => x !== n),
-                      )
-                    }
+                      );
+                    }}
                     className="absolute top-1.5 right-1.5 grid h-7 w-7 place-items-center rounded-full bg-ink/70 text-white"
                     aria-label={`${f.name} verwijderen`}
                   >
@@ -911,13 +930,21 @@ export function OfferteWizard() {
 
   const submit = async () => {
     setSending(true);
-    // Bij een netwerkfout tonen we toch de bevestiging mét telefoonnummer als terugvalweg.
-    await submitForm(
+    setSendError("");
+    const res = await submitForm(
       buildPayload(),
       { honeypot, startedAt },
       a.fotos.map((f) => f.file),
     );
     setSending(false);
+    if (!res.ok && res.reason === "network") {
+      setSendError(
+        a.fotos.length
+          ? `Versturen is niet gelukt. Met veel of grote bijlagen kan het langer dan 30 seconden duren: probeer het opnieuw met minder of kleinere bestanden, of bel ons op ${contact.phone}.`
+          : `Versturen is niet gelukt. Probeer het opnieuw, of bel ons op ${contact.phone}.`,
+      );
+      return;
+    }
     setDone(true);
     topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -1052,6 +1079,11 @@ export function OfferteWizard() {
                     </button>
                   </div>
                 </div>
+                {sendError && (
+                  <p role="alert" className="mt-3 text-right text-[14px] text-[#870000]">
+                    {sendError}
+                  </p>
+                )}
                 {!step.valid && step.id === "gegevens" && (
                   <p className="mt-3 text-right text-[14px] text-bark/70">
                     Vul naam, e-mail, gsm en gemeente in om te versturen.
